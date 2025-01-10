@@ -1,25 +1,25 @@
 .back {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center;    /* Center vertically */
-    height: 100vh;          /* Full viewport height */
-    background-size: cover; /* Ensure background covers entire section */
+    justify-content: center; 
+    align-items: center;    
+    height: 100vh;          
+    background-size: cover; 
     background-repeat: no-repeat;
-    overflow: hidden;       /* Prevent scrollbars on the background itself */
+    overflow: hidden;       /* Prevents scrollbars on the background itself */
 }
 
 .layout {
-    background: rgba(255, 255, 255, 0.9); /* Add a semi-transparent white background */
-    border-radius: 10px;                 /* Optional: Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
-    width: 60%;                          /* Set width as a percentage of the parent */
-    max-width: 600px;                    /* Restrict max width */
-    height: auto;                        /* Allow height to expand based on content */
-    max-height: 90vh;                    /* Prevent the layout from exceeding viewport height */
+    background: rgba(255, 255, 255, 0.9); 
+    border-radius: 10px;                
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    width: 50%;                          
+    max-width: 400px;                    
+    height: auto;                        
+    max-height: 90vh;                    /* Prevents the layout from exceeding viewport height */
     display: flex;
     flex-direction: column;
-    overflow: auto;                      /* Add scrolling for overflowing content */
-    padding: 20px;                       /* Add some padding for better content spacing */
+    overflow: auto;                      /* scrolling for overflowing content */
+    padding: 20px;                       
 }
 
 .header {
@@ -122,22 +122,25 @@
 }
 
 .toggleButton {
-    position: absolute;
-    top: 20px;
+    position: fixed;
+    bottom: 20px;
     right: 20px;
     z-index: 1000;
-    padding: 10px 20px;
-    background-color: #0078d4;
-    color: white;
+    background: none; 
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 0;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    outline: none;
 }
 
-.toggleButton:hover {
-    background-color: #005a9e;
+.sparkleIcon {
+    width: 40px; 
+    height: 40px;
+    transition: transform 0.2s ease;
+}
+
+.toggleButton:hover .sparkleIcon {
+    transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
 @media (min-width: 992px) {

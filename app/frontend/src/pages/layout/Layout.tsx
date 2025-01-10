@@ -4,9 +4,6 @@ import { useTranslation } from "react-i18next";
 import styles from "./Layout.module.css";
 import sparklePng from "../../assets/sparkle.png";
 import Image from "../../assets/backgroundimg.png";
-import { useLogin } from "../../authConfig";
-import { LoginButton } from "../../components/LoginButton";
-import { IconButton } from "@fluentui/react";
 
 const Layout = () => {
     const { t } = useTranslation();
@@ -16,10 +13,6 @@ const Layout = () => {
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
-    };
-
-    const toggleLayoutVisibility = () => {
-        setLayoutVisible(!layoutVisible);
     };
 
     const handleClickOutside = (event: MouseEvent) => {
@@ -39,15 +32,17 @@ const Layout = () => {
         };
     }, [menuOpen]);
 
+    const handleToggle = () => {
+        setLayoutVisible(!layoutVisible); // Toggle the visibility
+    };
+
     return (
         <section className={styles.back} style={{ backgroundImage: `url(${Image})` }}>
-            {/* Button to toggle layout visibility */}
-            <button onClick={toggleLayoutVisibility} className={styles.toggleButton}>
-                {layoutVisible ? "Hide Layout" : "Show Layout"}
+            <button className={styles.toggleButton} onClick={handleToggle}>
+                <img src={sparklePng} alt="Toggle Layout" className={styles.sparkleIcon} />
             </button>
 
-            {/* Conditionally render layout */}
-            {layoutVisible && (
+            {layoutVisible && ( 
                 <div className={styles.layout}>
                     <header className={styles.header} role={"banner"}>
                         <div className={styles.headerContainer} ref={menuRef}>
@@ -62,7 +57,9 @@ const Layout = () => {
                                 </h3>
                             </Link>
                             <nav>
-                                <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
+                                <ul
+                                    className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}
+                                >
                                     <li>
                                         <NavLink
                                             to="/"
@@ -91,17 +88,9 @@ const Layout = () => {
                                     </li>
                                 </ul>
                             </nav>
-                            <div className={styles.loginMenuContainer}>
-                                {useLogin && <LoginButton />}
-                                <IconButton
-                                    iconProps={{ iconName: "GlobalNavButton" }}
-                                    className={styles.menuToggle}
-                                    onClick={toggleMenu}
-                                    ariaLabel={t("labels.toggleMenu")}
-                                />
-                            </div>
                         </div>
                     </header>
+
                     <Outlet />
                 </div>
             )}
