@@ -5,17 +5,21 @@ import styles from "./Layout.module.css";
 import sparklePng from "../../assets/sparkle.png";
 import Image from "../../assets/backgroundimg.png";
 import { useLogin } from "../../authConfig";
-
 import { LoginButton } from "../../components/LoginButton";
 import { IconButton } from "@fluentui/react";
 
 const Layout = () => {
     const { t } = useTranslation();
     const [menuOpen, setMenuOpen] = useState(false);
+    const [layoutVisible, setLayoutVisible] = useState(false); // State to toggle layout visibility
     const menuRef: RefObject<HTMLDivElement> = useRef(null);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    };
+
+    const toggleLayoutVisibility = () => {
+        setLayoutVisible(!layoutVisible);
     };
 
     const handleClickOutside = (event: MouseEvent) => {
@@ -36,54 +40,72 @@ const Layout = () => {
     }, [menuOpen]);
 
     return (
+        <section className={styles.back} style={{ backgroundImage: `url(${Image})` }}>
+            {/* Button to toggle layout visibility */}
+            <button onClick={toggleLayoutVisibility} className={styles.toggleButton}>
+                {layoutVisible ? "Hide Layout" : "Show Layout"}
+            </button>
 
-        <section className={styles.back} style={{ backgroundImage: 'url(${Image})'}}>
-        <div className={styles.layout}>
-            <header className={styles.header} role={"banner"}>
-                <div className={styles.headerContainer} ref={menuRef}>
-                    <Link to="/" className={styles.headerTitleContainer}>
-                    <h3 className={styles.headerTitle}>
-                            {t("headerTitle")}
-                            <img src={sparklePng} alt="Sparkle icon" style={{ width: "24px", height: "24px", marginLeft: "8px" }} />
-                        </h3>
-                        </Link>
-                    <nav>
-                        <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
-                            <li>
-                                <NavLink
-                                    to="/"
-                                    className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}
-                                    onClick={() => setMenuOpen(false)}
-                                >
-                                    {t("chat")}
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to="/qa"
-                                    className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}
-                                    onClick={() => setMenuOpen(false)}
-                                >
-                                    {t("qa")}
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div className={styles.loginMenuContainer}>
-                        {useLogin && <LoginButton />}
-                        <IconButton
-                            iconProps={{ iconName: "GlobalNavButton" }}
-                            className={styles.menuToggle}
-                            onClick={toggleMenu}
-                            ariaLabel={t("labels.toggleMenu")}
-                        />
-                    </div>
+            {/* Conditionally render layout */}
+            {layoutVisible && (
+                <div className={styles.layout}>
+                    <header className={styles.header} role={"banner"}>
+                        <div className={styles.headerContainer} ref={menuRef}>
+                            <Link to="/" className={styles.headerTitleContainer}>
+                                <h3 className={styles.headerTitle}>
+                                    {t("headerTitle")}
+                                    <img
+                                        src={sparklePng}
+                                        alt="Sparkle icon"
+                                        style={{ width: "24px", height: "24px", marginLeft: "8px" }}
+                                    />
+                                </h3>
+                            </Link>
+                            <nav>
+                                <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
+                                    <li>
+                                        <NavLink
+                                            to="/"
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? styles.headerNavPageLinkActive
+                                                    : styles.headerNavPageLink
+                                            }
+                                            onClick={() => setMenuOpen(false)}
+                                        >
+                                            {t("chat")}
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink
+                                            to="/qa"
+                                            className={({ isActive }) =>
+                                                isActive
+                                                    ? styles.headerNavPageLinkActive
+                                                    : styles.headerNavPageLink
+                                            }
+                                            onClick={() => setMenuOpen(false)}
+                                        >
+                                            {t("qa")}
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div className={styles.loginMenuContainer}>
+                                {useLogin && <LoginButton />}
+                                <IconButton
+                                    iconProps={{ iconName: "GlobalNavButton" }}
+                                    className={styles.menuToggle}
+                                    onClick={toggleMenu}
+                                    ariaLabel={t("labels.toggleMenu")}
+                                />
+                            </div>
+                        </div>
+                    </header>
+                    <Outlet />
                 </div>
-            </header>
-
-            <Outlet />
-        </div>
-    </section>
+            )}
+        </section>
     );
 };
 

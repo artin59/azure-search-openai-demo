@@ -1,14 +1,25 @@
-.back{
+.back {
     display: flex;
-    flex-direction: column;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+    height: 100vh;          /* Full viewport height */
+    background-size: cover; /* Ensure background covers entire section */
+    background-repeat: no-repeat;
+    overflow: hidden;       /* Prevent scrollbars on the background itself */
 }
 
-
-
 .layout {
-    /*display: flex;
-    #flex-direction: column;*/
-    height: 50%;
+    background: rgba(255, 255, 255, 0.9); /* Add a semi-transparent white background */
+    border-radius: 10px;                 /* Optional: Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+    width: 60%;                          /* Set width as a percentage of the parent */
+    max-width: 600px;                    /* Restrict max width */
+    height: auto;                        /* Allow height to expand based on content */
+    max-height: 90vh;                    /* Prevent the layout from exceeding viewport height */
+    display: flex;
+    flex-direction: column;
+    overflow: auto;                      /* Add scrolling for overflowing content */
+    padding: 20px;                       /* Add some padding for better content spacing */
 }
 
 .header {
@@ -108,6 +119,25 @@
     display: flex;
     align-items: center;
     gap: 0; /* Ensure no gap between login button and menu toggle */
+}
+
+.toggleButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 10px 20px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggleButton:hover {
+    background-color: #005a9e;
 }
 
 @media (min-width: 992px) {
