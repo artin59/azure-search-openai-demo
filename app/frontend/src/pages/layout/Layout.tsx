@@ -3,7 +3,7 @@ import { Outlet, NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styles from "./Layout.module.css";
 import sparklePng from "../../assets/sparkle.png";
-
+import Image from "../../assets/backgroundimg.png";
 import { useLogin } from "../../authConfig";
 
 import { LoginButton } from "../../components/LoginButton";
@@ -36,6 +36,8 @@ const Layout = () => {
     }, [menuOpen]);
 
     return (
+
+        <section className={styles.back} style={{ backgroundImage: 'url(${Image})'}}>
         <div className={styles.layout}>
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer} ref={menuRef}>
@@ -81,6 +83,7 @@ const Layout = () => {
 
             <Outlet />
         </div>
+    </section>
     );
 };
 
