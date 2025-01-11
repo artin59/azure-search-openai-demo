@@ -9,17 +9,20 @@
 }
 
 .layout {
-    background: rgba(255, 255, 255, 0.9); 
-    border-radius: 10px;                
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    width: 50%;                          
-    max-width: 400px;                    
-    height: auto;                        
-    max-height: 90vh;                    /* Prevents the layout from exceeding viewport height */
-    display: flex;
-    flex-direction: column;
-    overflow: auto;                      /* scrolling for overflowing content */
-    padding: 20px;                       
+    position: fixed; /* Keeps the layout fixed on the screen */
+    top: 0;
+    right: 0; /* Aligns the layout to the right */
+    height: 100%; /* Ensures the layout covers the full height */
+    width: 40vw; /* Adjust the width as needed */
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.layoutVisible {
+    transform: translateX(0); /* Slides the layout into view */
 }
 
 .header {
@@ -29,12 +32,12 @@
 
 .headerContainer {
     display: flex;
+    flex-wrap: wrap; /* Allows elements to wrap to a new line if needed */
     align-items: center;
     justify-content: space-between;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    position: relative;
+    padding: 1rem;
 }
+
 
 .headerTitleContainer {
     display: flex;
@@ -134,8 +137,8 @@
 }
 
 .sparkleIcon {
-    width: 40px; 
-    height: 40px;
+    width: 50px; 
+    height: 50px;
     transition: transform 0.2s ease;
 }
 
