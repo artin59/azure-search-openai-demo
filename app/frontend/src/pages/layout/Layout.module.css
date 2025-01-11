@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center; 
     align-items: center;    
-    height: 100vh;          
+    height: 90vh;          
     background-size: cover; 
     background-repeat: no-repeat;
     overflow: hidden;       /* Prevents scrollbars on the background itself */
@@ -12,8 +12,8 @@
     position: fixed; /* Keeps the layout fixed on the screen */
     top: 0;
     right: 0; /* Aligns the layout to the right */
-    height: 100%; /* Ensures the layout covers the full height */
-    width: 40vw; /* Adjust the width as needed */
+    height: 70%; /* Ensures the layout covers the full height */
+    width: 30vw; /* Adjust the width as needed */
     background-color: white;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     overflow: auto;
@@ -53,7 +53,7 @@
 
 .headerTitle {
     margin-left: 0.5rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .headerNavList {

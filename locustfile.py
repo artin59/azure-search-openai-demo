@@ -20,7 +20,7 @@ class ChatUser(HttpUser):
                             [
                                 "Is Nestle using sustainable practices?",
                                 "Are Nestle products peanut free?",
-                                "what are some good recipes for the summer?",
+                                "what are some good snack recipes?",
                                 "",
                             ]
                         ),
