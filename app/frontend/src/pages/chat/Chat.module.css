@@ -18,7 +18,7 @@
   .chatContainer {
     width: 100%;
     max-width: 100%;
-    padding: 10px; /* Adjust this padding if needed */
+    padding: 10px; 
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -33,19 +33,21 @@
   }
 
   .chatEmptyStateTitle {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
   }
 
   .chatEmptyStateSubtitle {
-    font-size: 1rem;
+    font-size: 0.5rem;
     text-align: center;
   }
 
   .chatMessageStream {
-    overflow-x: auto; /* This will allow horizontal scrolling if needed */
     width: 100%;
+    word-wrap: break-word;  
+    white-space: normal;    
+    font-size: 14px;        
   }
 
   .chatMessageStream, .chatContainer {
@@ -56,13 +58,12 @@
   }
 
   .chatMessageGpt {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
+    font-size: 14px;        
+    line-height: 1.4;       
   }
 
   .chatMessageGptMinWidth {
-    min-width: 300px; /* To ensure a reasonable minimum width for the answers */
+    min-width: 300px; 
   }
 
   .chatMessageGpt, .chatMessageGptMinWidth {
@@ -72,6 +73,7 @@
   }
 
   .chatInput {
+    font-size: 14px;        
     width: 100%;
   }
 

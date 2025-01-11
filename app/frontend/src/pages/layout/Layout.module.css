@@ -5,15 +5,15 @@
     height: 90vh;          
     background-size: cover; 
     background-repeat: no-repeat;
-    overflow: hidden;       /* Prevents scrollbars on the background itself */
+    overflow: hidden;       
 }
 
 .layout {
-    position: fixed; /* Keeps the layout fixed on the screen */
-    top: 0;
-    right: 0; /* Aligns the layout to the right */
-    height: 70%; /* Ensures the layout covers the full height */
-    width: 30vw; /* Adjust the width as needed */
+    position: fixed; 
+    top:0;    
+    right: 0; 
+    height: 100%; 
+    width: 30vw; 
     background-color: white;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     overflow: auto;
@@ -22,7 +22,7 @@
 }
 
 .layoutVisible {
-    transform: translateX(0); /* Slides the layout into view */
+    transform: translateX(0); 
 }
 
 .header {
@@ -32,7 +32,7 @@
 
 .headerContainer {
     display: flex;
-    flex-wrap: wrap; /* Allows elements to wrap to a new line if needed */
+    flex-wrap: wrap; 
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
@@ -71,7 +71,7 @@
 }
 
 .headerNavList.show {
-    display: flex; /* Show when toggled */
+    display: flex; 
 }
 
 .headerNavPageLink {
@@ -121,7 +121,7 @@
 .loginMenuContainer {
     display: flex;
     align-items: center;
-    gap: 0; /* Ensure no gap between login button and menu toggle */
+    gap: 0; 
 }
 
 .toggleButton {
@@ -143,7 +143,7 @@
 }
 
 .toggleButton:hover .sparkleIcon {
-    transform: scale(1.1); /* Slightly enlarge on hover */
+    transform: scale(1.1); 
 }
 
 @media (min-width: 992px) {
